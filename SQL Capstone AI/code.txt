@@ -1,0 +1,82 @@
+/*select *
+ from survey
+ limit 10;
+columns = 1.question, 2. User_id, 3. Response*/
+
+/*select *
+ from quiz
+ limit 5;
+ 
+ select * 
+ from home_try_on
+ limit 5;
+ 
+ select * 
+ from purchase
+ limit 5;*/
+ 
+/*SELECT DISTINCT quiz.user_id,
+   home_try_on.user_id IS NOT NULL AS 'is_home_try_on',
+  home_try_on.number_of_pairs,
+   purchase.user_id IS NOT NULL AS 'is_purchase'
+FROM quiz
+LEFT JOIN home_try_on
+   ON quiz.user_id = home_try_on.user_id
+LEFT JOIN purchase 
+   ON purchase.user_id = quiz.user_id
+LIMIT 10;
+
+WITH funnels AS
+(SELECT DISTINCT quiz.user_id,
+   home_try_on.user_id IS NOT NULL AS 'is_home_try_on',
+  home_try_on.number_of_pairs,
+   purchase.user_id IS NOT NULL AS 'is_purchase'
+FROM quiz
+LEFT JOIN home_try_on
+   ON quiz.user_id = home_try_on.user_id
+LEFT JOIN purchase )
+*/
+/*select *
+from funnels
+limit 20
+;*/
+/*SELECT COUNT(*) AS 'num_purchase', number_of_pairs, 
+sum(is_home_try_on) as 'try'
+from funnels
+group by 2;*/
+
+/*Additional findings from quiz */
+
+/*select count(user_id), style
+from quiz
+group by 2
+order by 1 desc;*/
+
+/*select count(user_id), fit
+from quiz
+group by 2
+order by 1 desc;*/
+
+/*select count(user_id), shape
+from quiz
+group by 2
+order by 1 desc;*/
+
+/*select count(user_id), color
+from quiz
+group by 2
+order by 1 desc;*/
+
+/*Additional findings from purchase  */
+
+/*select *
+from purchase
+limit 20;*/
+
+select count(user_id), product_id, model_name, color, price
+from purchase
+group by 2
+order by 1 desc;
+ 
+
+
